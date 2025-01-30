@@ -1,4 +1,0 @@
-/home/ambhi/public/debugger/build/CMakeFiles/debug.dir
-/home/ambhi/public/debugger/build/CMakeFiles/test.dir
-/home/ambhi/public/debugger/build/CMakeFiles/edit_cache.dir
-/home/ambhi/public/debugger/build/CMakeFiles/rebuild_cache.dir
