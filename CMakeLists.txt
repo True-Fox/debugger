@@ -6,6 +6,7 @@ include_directories(include)
 add_executable(debug 
     main.cpp
     lib/debugger.cpp
+    lib/breakpoint.cpp
     lib/linenoise.c
 )
 

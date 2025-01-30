@@ -8,10 +8,13 @@
 #include <sys/wait.h>
 #include <vector>
 #include <sstream>
+#include <unordered_map>
+#include <sys/personality.h>
 
 extern "C" {
     #include "linenoise.h"
 }
+#include "breakpoint.h"
 
 std::vector<std::string> split(const std::string& ,char);
 bool is_prefix(const std::string&, const std::string& );
@@ -24,9 +27,11 @@ class debugger {
     void run();
     void handle_command(const std::string&);
     void continue_execution();
+    void set_breakpoint(std::intptr_t addr);
 
     private:
         std::string m_prog_name;
+        std::unordered_map<std::intptr_t, breakpoint> m_breakpoints;
         pid_t m_pid;
 };
 

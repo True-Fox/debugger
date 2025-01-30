@@ -1,4 +1,5 @@
 #include "../include/debugger.h"
+#include "debugger.h"
 
 std::vector<std::string> split(const std::string &s, char delimiter){
     std::vector<std::string> out {};
@@ -36,6 +37,9 @@ void debugger::handle_command(const std::string& line){
 
     if(is_prefix(command, "continue")){
         continue_execution();
+    }else if(is_prefix(command, "break")){
+        std::string addr {args[1],2};
+        set_breakpoint(std::stol(addr, 0, 16));
     }else{
         std::cerr << "Unknown command\n";
     }
@@ -47,4 +51,11 @@ void debugger::continue_execution(){
     int wait_status;
     auto options = 0;
     waitpid(m_pid, &wait_status, options);
+}
+
+void debugger::set_breakpoint(std::intptr_t addr){
+    std::cout << "Set breakpoint at address 0x" << std::hex << addr << std::endl;
+    breakpoint bp {m_pid, addr};
+    bp.enable();
+    m_breakpoints[addr] = bp;
 }

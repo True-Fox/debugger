@@ -11,6 +11,7 @@ int main(int argc, char* argv[]){
 
     if (pid == 0){
         //Child Process
+        personality(ADDR_NO_RANDOMIZE);
         ptrace(PTRACE_TRACEME, 0, nullptr, nullptr);
         execl(prog, prog, nullptr);
     }else if(pid >=1){
