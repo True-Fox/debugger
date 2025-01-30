@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/debug.dir/main.cpp.o CMakeFiles/debug.dir/lib/debugger.cpp.o CMakeFiles/debug.dir/lib/linenoise.c.o -o bin/debug 
